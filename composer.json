@@ -1,0 +1,52 @@
+{
+    "name": "itt/watchman-php",
+    "description": "Watchman PHP SDK: captures errors into a local spool; bin/ship.php delivers them to the Watchman server.",
+    "type": "library",
+    "license": "proprietary",
+    "keywords": [
+        "error-monitoring",
+        "logging"
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*"
+    },
+    "require-dev": {
+        "nikic/php-parser": "^5.0",
+        "phpunit/phpunit": "^9.6"
+    },
+    "suggest": {
+        "ext-curl": "Faster, more robust HTTP for bin/ship.php (falls back to PHP streams)",
+        "laravel/framework": "Auto-discovered Laravel adapter (Watchman\\Laravel\\WatchmanServiceProvider)"
+    },
+    "autoload": {
+        "psr-4": {
+            "Watchman\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Watchman\\Tests\\": "tests/"
+        }
+    },
+    "bin": [
+        "bin/ship.php"
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Watchman\\Laravel\\WatchmanServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "7.4.33"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "guard": "php tools/php74-guard.php"
+    }
+}
